@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>site que troca de cor</title> 
+    <style>
+        body {
+            transition: background-color 0.3s; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Clique para alternar as cores</h1>
+    <button onclick="trocarCor()">Mudar Cor</button>
+    <script>
+        const cores = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FFD700"];
+            let indice = 0;
+        function trocarCor() {
+                document.body.style.backgroundColor = cores[indice];
+                        indice++;
+                if (indice === cores.length) {
+            indice = 0;
+            }
+        }
+    </script>
+</body>
+</html>
