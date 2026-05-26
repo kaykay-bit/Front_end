@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #2563eb;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        .banner {
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 5px black;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .sobre {
+            padding: 40px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .sobre h2 {
+            margin-bottom: 15px;
+            color: #1e3a8a;
+        }
+
+        .produtos {
+            padding: 40px;
+        }
+
+        .produtos h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e3a8a;
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .preco {
+            color: green;
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #1e40af;
+        }
+
+        .promocoes {
+            background-color: #fff7ed;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .promocoes h2 {
+            color: #ea580c;
+            margin-bottom: 20px;
+        }
+
+        .oferta {
+            font-size: 24px;
+            color: red;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nova Store</h1>
+        <p>Sua loja de departamento online</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <section class="banner" id="inicio">
+        Mega Promoções da Semana
+    </section>
+
+    <section class="sobre">
+        <h2>Sobre a Loja</h2>
+        <p>
+            A Nova Store oferece produtos de qualidade nas áreas de eletrônicos,
+            roupas, brinquedos, decoração e muito mais.
+        </p>
+    </section>
+
+    <section class="produtos" id="produtos">
+        <h2>Nossos Produtos</h2>
+
+        <div class="grid-produtos">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop" alt="Celular">
+                <h3>Smartphone</h3>
+                <p class="preco">R$ 1.899,00</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="Camiseta">
+                <h3>Camiseta</h3>
+                <p class="preco">R$ 79,90</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Fone">
+                <h3>Fone Bluetooth</h3>
+                <p class="preco">R$ 199,90</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop" alt="Vestido">
+                <h3>Vestido Feminino</h3>
+                <p class="preco">R$ 149,90</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=800&auto=format&fit=crop" alt="Tênis">
+                <h3>Tênis Esportivo</h3>
+                <p class="preco">R$ 249,90</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop" alt="Notebook">
+                <h3>Notebook</h3>
+                <p class="preco">R$ 3.499,00</p>
+                <button class="btn">Comprar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="promocoes" id="promocoes">
+        <h2>Promoções Especiais</h2>
+
+        <p class="oferta">50% OFF em roupas selecionadas</p>
+        <br>
+        <p class="oferta">Frete grátis acima de R$ 300,00</p>
+    </section>
+
+    <footer id="contato">
+        <h3>Nova Store</h3>
+        <p>Rua das Compras, 100 - São Paulo</p>
+        <p>Telefone: (11) 99999-9999</p>
+        <p>Instagram: @novastore</p>
+    </footer>
+
+</body>
+</html>
+

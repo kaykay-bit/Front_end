@@ -1,0 +1,48 @@
+Troca de cores com alerta
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Troca de Cor com Alerta</title>
+    <style>
+        body {
+            transition: background-color 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mudar Cor e Alerta</h1>
+    <button onclick="mudarTudo()">Mudar Fundo</button>
+
+    <script>
+        const cores = ["Vermelho", "Verde", "Azul", "Amarelo", "Roxo"];
+        const hex = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#800080"];
+        let i = 0;
+
+        function mudarTudo() {
+            // 1. Muda a cor de fundo
+            document.body.style.backgroundColor = hex[i];
+
+            // 2. Dispara o alerta avisando o nome da cor
+            alert("A cor agora é: " + cores[i]);
+
+            // 3. Lógica para girar o índice (0 a 4)
+            i++;
+            if (i === cores.length) {
+                i = 0;
+            }
+        }
+    </script>
+</body>
+</html>
