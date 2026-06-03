@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGear Store</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .carrinho-topo {
+            position: relative;
+            font-size: 30px;
+        }
+
+        .contador {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: red;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            font-size: 12px;
+        }
+
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+        }
+
+        .adicionar {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .carrinho {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .remover {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .limpar {
+            background: orange;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🛒 TechGear Store</div>
+
+        <div class="carrinho-topo">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="contador" id="contador">0</div>
+        </div>
+    </header>
+
+    <div class="produtos" id="produtos"></div>
+
+    <div class="carrinho">
+        <h2>Carrinho de Compras</h2>
+
+        <div id="listaCarrinho"></div>
+
+        <h2 id="total">Total: R$ 0</h2>
+
+        <button class="limpar" onclick="limparCarrinho()">
+            Limpar Carrinho
+        </button>
+    </div>
+
+    <script>
+
+        const produtos = [
+            {id:1,nome:"Notebook Gamer",preco:3500},
+            {id:2,nome:"Mouse Gamer",preco:150},
+            {id:3,nome:"Teclado Mecânico",preco:250},
+            {id:4,nome:"Monitor 24''",preco:900},
+            {id:5,nome:"Headset",preco:200},
+            {id:6,nome:"Webcam",preco:180},
+            {id:7,nome:"Microfone USB",preco:300},
+            {id:8,nome:"SSD 1TB",preco:450},
+            {id:9,nome:"HD Externo",preco:400},
+            {id:10,nome:"Impressora",preco:600},
+            {id:11,nome:"Roteador Wi-Fi",preco:250},
+            {id:12,nome:"Placa de Vídeo",preco:2500},
+            {id:13,nome:"Processador",preco:1200},
+            {id:14,nome:"Memória RAM",preco:300},
+            {id:15,nome:"Fonte 600W",preco:350},
+            {id:16,nome:"Gabinete Gamer",preco:500},
+            {id:17,nome:"Notebook Básico",preco:2200},
+            {id:18,nome:"Tablet",preco:1300},
+            {id:19,nome:"Smartwatch",preco:700},
+            {id:20,nome:"Caixa de Som",preco:280}
+        ];
+
+        let carrinho = [];
+
+        const areaProdutos = document.getElementById("produtos");
+
+        produtos.forEach(produto => {
+
+            areaProdutos.innerHTML += `
+                <div class="card">
+                    <h3>${produto.nome}</h3>
+                    <p>R$ ${produto.preco}</p>
+                    <button class="adicionar"
+                    onclick="adicionarItem(${produto.id})">
+                    Adicionar
+                    </button>
+                </div>
+            `;
+        });
+
+        function adicionarItem(id){
+
+            let produto = produtos.find(p => p.id === id);
+
+            let item = carrinho.find(i => i.id === id);
+
+            if(item){
+                item.quantidade++;
+            }else{
+                carrinho.push({
+                    ...produto,
+                    quantidade:1
+                });
+            }
+
+            atualizarCarrinho();
+        }
+
+        function removerItem(id){
+
+            carrinho = carrinho.filter(item => item.id !== id);
+
+            atualizarCarrinho();
+        }
+
+        function limparCarrinho(){
+
+            carrinho = [];
+
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho(){
+
+            let lista = document.getElementById("listaCarrinho");
+
+            let total = 0;
+            let quantidadeTotal = 0;
+
+            lista.innerHTML = "";
+
+            carrinho.forEach(item => {
+
+                total += item.preco * item.quantidade;
+                quantidadeTotal += item.quantidade;
+
+                lista.innerHTML += `
+                    <div class="item">
+                        <strong>${item.nome}</strong><br>
+                        Quantidade: ${item.quantidade}<br>
+                        Total: R$ ${item.preco * item.quantidade}
+                        <br>
+                        <button class="remover"
+                        onclick="removerItem(${item.id})">
+                        Remover
+                        </button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total").innerHTML =
+                "Total: R$ " + total;
+
+            document.getElementById("contador").innerHTML =
+                quantidadeTotal;
+        }
+
+    </script>
+
+</body>
+</html>
